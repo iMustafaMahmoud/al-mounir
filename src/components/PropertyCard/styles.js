@@ -28,6 +28,7 @@ export const useStyles = makeStyles((theme) => ({
     color: "black",
   },
   MuiCardHeader: {
-    backgroundColor: "#D4B164",
+    backgroundColor: "#D4AF37",
+    color:"white"
   },
 }));

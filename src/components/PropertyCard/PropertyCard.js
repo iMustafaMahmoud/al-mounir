@@ -19,7 +19,7 @@ export default function RecipeReviewCard() {
         className={classes.MuiCardHeader}
         title={
           <Typography variant="h2" align="center">
-            <Box component="span" color="black">
+            <Box component="span" color="white">
               Abrag El-Mounir
             </Box>
           </Typography>

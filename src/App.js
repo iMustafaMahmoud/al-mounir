@@ -26,11 +26,11 @@ function App() {
         <Box
           width="100%"
           height="150px"
-          bgcolor="#D4B164"
+          bgcolor="#D4AF37"
           mt={8}
           mb={5}
           display="flex"
-          color="black"
+          color="white"
           alignItems="center"
           justifyContent="center"
           fontSize="48px"
