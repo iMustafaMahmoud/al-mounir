@@ -8,12 +8,12 @@ const fonts = {
   },
   h2: {
     // 34px
-    fontSize: "2.125rem",
-    fontWeight: 700,
+    fontSize: "2.1rem",
+    fontWeight: 200,
   },
   h3: {
     // 20px
-    fontSize: "1.25rem",
+    fontSize: "1.5rem",
     fontWeight: 400,
   },
   body1: {
