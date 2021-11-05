@@ -8,7 +8,6 @@ import { Box, Typography, Grid, Link } from "@material-ui/core";
 const Home = () => {
   return (
     <>
-      <TopAppBar />
       <BannerHeader />
       <Box
         width="100%"
@@ -38,7 +37,6 @@ const Home = () => {
           </Grid>
         </Grid>
       </Box>
-      <Footer />
     </>
   );
 };

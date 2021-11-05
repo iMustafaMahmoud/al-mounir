@@ -23,6 +23,7 @@ const Footer = () => {
 
   return (
     <Box
+      mt={6}
       padding="20px 50px"
       borderTop={1}
       xborderColor="#D4AF37"

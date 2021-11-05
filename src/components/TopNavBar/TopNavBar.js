@@ -11,6 +11,7 @@ import { Box, Button } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import IconButton from "@material-ui/core/IconButton";
+import Logo from "../../assets/images/final-logo.png";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -55,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
       color: "#06D755",
     },
   },
+  Logo: {
+    height: "120px",
+    width: "120px",
+  },
 }));
 
 export default function TopAppBar(props) {
@@ -72,9 +77,7 @@ export default function TopAppBar(props) {
               width="100%"
             >
               <Box>
-                <Typography variant="h2" noWrap>
-                  Al-Mounir
-                </Typography>
+                <img className={styles.Logo} src={Logo} alt="" />
               </Box>
               <Box display="flex" justifyContent="space-between" width="400px">
                 <Button variant="contained" className="header">
