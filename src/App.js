@@ -1,8 +1,10 @@
-import TopAppBar from "./components/TopNavBar/TopNavBar";
-import { Box, Typography, Grid } from "@material-ui/core";
+import { Box, Typography, Grid, Link } from "@material-ui/core";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { theme } from "./theme/index";
 import { makeStyles } from "@material-ui/core/styles";
+import Home from "./components/Home/Home";
+
+=======
 import { Routes, Route, Link } from "react-router-dom";
 import BannerHeader from "./components/Banner/Banner";
 import PropertyCard from "./components/PropertyCard/PropertyCard";
@@ -11,6 +13,15 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     height: "600px",
     width: "600px",
+  },
+  facebookIcon: {
+    color: "#0879E9",
+  },
+  whatsAppIcon: {
+    color: "#06D755",
+  },
+  facebookLink: {
+    color: "white",
   },
 }));
 function Home() {
