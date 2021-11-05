@@ -12,7 +12,7 @@ const Home = () => {
       <Box
         width="100%"
         height="150px"
-        bgcolor="#D4AF37"
+        bgcolor="#B48731"
         mt={8}
         mb={5}
         display="flex"
