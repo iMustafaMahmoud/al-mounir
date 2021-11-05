@@ -61,7 +61,7 @@ class Admin extends Component {
                 }}
                 xs={{ span: 10 }}
                 lg={{ span: 10 }}
-                className={
+                className={ 
                   this.state.activeElement === "Project" ? "active" : ""
                 }
                 onClick={() => {
