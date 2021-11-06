@@ -2,8 +2,11 @@ import { Box, Typography, Grid, Link } from "@material-ui/core";
 import { CssBaseline, ThemeProvider } from "@material-ui/core";
 import { theme } from "./theme/index";
 import { makeStyles } from "@material-ui/core/styles";
+import { Routes, Route } from "react-router-dom";
+
 import Projects from "./components/Projects/Projects";
 import TopAppBar from "./components/TopNavBar/TopNavBar";
+import Admin from "./components/AdminPanel/Admin";
 
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
@@ -32,9 +35,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <TopAppBar />
-      <Home />
-      {/* <Projects /> */}
-      {/* <ProjectDetails /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:id" element={<ProjectDetails />} />
+
+        <Route path="admin" element={<Admin />} />
+      </Routes>
       <Footer />
     </ThemeProvider>
   );
