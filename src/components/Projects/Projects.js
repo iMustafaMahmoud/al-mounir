@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Typography, Grid } from "@material-ui/core";
 import { useStyles } from "./styles";
 import PropertyCard from "../PropertyCard/PropertyCard";
+import { getRequest } from "../../Network/CRUD";
 
 const Projects = () => {
+  var indexes = [];
+  useEffect(() => {
+    (async () => {
+      let projects = [];
+      let response = await getRequest(`Project`);
+      console.log(response);
+    })();
+  }, []);
   const styles = useStyles();
-  const indexes = [1, 2, 3, 4, 5, 6, 7, 8];
   return (
     <>
       <Box position="relative">
@@ -25,10 +33,10 @@ const Projects = () => {
       </Box>
       <Box mt={4} width="100%">
         <Grid container spacing={2}>
-          {indexes.map((i) => {
+          {indexes.map((element) => {
             return (
               <Grid className={styles.gridItem} item xs={12} lg={4}>
-                <PropertyCard />
+                <PropertyCard project={element} />
               </Grid>
             );
           })}
