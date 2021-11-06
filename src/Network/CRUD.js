@@ -18,6 +18,7 @@ const handleErrors = (error) => {
   }
 };
 const getRequest = async (url) => {
+  console.log("get", `${API_ENDPOINT}${url}`);
   const config = {
     headers: {
       "Content-Type": "application/json",
