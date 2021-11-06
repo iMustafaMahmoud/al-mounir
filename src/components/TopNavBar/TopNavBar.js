@@ -93,10 +93,16 @@ export default function TopAppBar(props) {
                     <Typography variant="subtitle2">Developers</Typography>
                   </Button>
                 </NavLink>
-
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Projects</Typography>
-                </Button>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">About Us</Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Contact Us</Typography>
+                  </Button>
+                </NavLink>
               </Box>
               <Box>
                 <IconButton className={styles.iconButtonFacebook}>
