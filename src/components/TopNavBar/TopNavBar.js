@@ -12,6 +12,7 @@ import FacebookIcon from "@material-ui/icons/Facebook";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import IconButton from "@material-ui/core/IconButton";
 import Logo from "../../assets/images/final-logo.png";
+import { NavLink } from "react-router-dom";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -77,20 +78,24 @@ export default function TopAppBar(props) {
               width="100%"
             >
               <Box>
-                <img className={styles.Logo} src={Logo} alt="" />
+                <NavLink to="/">
+                  <img className={styles.Logo} src={Logo} alt="" />
+                </NavLink>
               </Box>
               <Box display="flex" justifyContent="space-between" width="400px">
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Properties</Typography>
-                </Button>
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Developers</Typography>
-                </Button>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Projects</Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Developers</Typography>
+                  </Button>
+                </NavLink>
+
                 <Button variant="contained" className="header">
                   <Typography variant="subtitle2">Projects</Typography>
-                </Button>
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Payment</Typography>
                 </Button>
               </Box>
               <Box>
