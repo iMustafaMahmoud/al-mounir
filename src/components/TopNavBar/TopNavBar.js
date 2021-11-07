@@ -90,12 +90,12 @@ export default function TopAppBar(props) {
                 </NavLink>
                 <NavLink to="/projects" style={{ textDecoration: "none" }}>
                   <Button variant="contained" className="header">
-                    <Typography variant="subtitle2">Developers</Typography>
+                    <Typography variant="subtitle2">Mission</Typography>
                   </Button>
                 </NavLink>
                 <NavLink to="/projects" style={{ textDecoration: "none" }}>
                   <Button variant="contained" className="header">
-                    <Typography variant="subtitle2">About Us</Typography>
+                    <Typography variant="subtitle2">Vision</Typography>
                   </Button>
                 </NavLink>
                 <NavLink to="/projects" style={{ textDecoration: "none" }}>

@@ -20,13 +20,13 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   animatedText: {
-    animation: `$moveRight 1s ease-out`,
+    animation: `$moveRight 1.5s ease-out`,
   },
 
   "@keyframes moveRight": {
     "0%": {
       opacity: 0,
-      transform: "translateX(-100px)",
+      transform: "translateX(-200px)",
     },
     "80%": {
       transform: "translateX(10px)",

@@ -37,7 +37,7 @@ function App() {
       <TopAppBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route exact path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
 
         <Route path="admin" element={<Admin />} />
