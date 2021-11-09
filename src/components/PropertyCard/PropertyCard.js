@@ -9,7 +9,7 @@ import { Box } from "@material-ui/core";
 import ter3et from "../../assets/images/ter3et.jpeg";
 import { useStyles } from "./styles";
 
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({ project }) {
   const classes = useStyles();
 
   return (
@@ -20,16 +20,16 @@ export default function RecipeReviewCard() {
         title={
           <Typography variant="h2" align="center">
             <Box component="span" color="white">
-              Abrag El-Mounir
+              {project.projectName}
             </Box>
           </Typography>
         }
       />
-      <CardMedia className={classes.media} image={ter3et} />
+      <CardMedia className={classes.media} image={project.prosureImage} />
       <CardContent className={classes.MuiCardHeader}>
         <Typography variant="subtitle2" align="center">
           <Box component="span" color="black">
-            92 El-Zeiton metro station street
+            {project.location}
           </Box>
         </Typography>
       </CardContent>

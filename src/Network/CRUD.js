@@ -38,12 +38,12 @@ const getRequest = async (url) => {
 const PostRequest = async (body, targetlink) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
   };
 
   return axios
-    .post(`${API_ENDPOINT}${targetlink}`, JSON.stringify(body), config)
+    .post(`${API_ENDPOINT}${targetlink}`, body, config)
     .then(async (response) => {
       return response;
     })
@@ -73,11 +73,11 @@ const MultipartRequest = async (body, targetlink) => {
 const PutRequest = async (body, targetlink) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     },
   };
   return axios
-    .put(`${API_ENDPOINT}${targetlink}`, JSON.stringify(body), config)
+    .put(`${API_ENDPOINT}${targetlink}`, body, config)
     .then(async (response) => {
       return response;
     })

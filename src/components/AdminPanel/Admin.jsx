@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { useStyles } from "./styles";
 import SearchBar from "material-ui-search-bar";
 
@@ -17,22 +17,99 @@ import {
   TableRow,
   Paper,
 } from "@material-ui/core";
+import {
+  PostRequest,
+  getRequest,
+  PutRequest,
+  DeleteRequest,
+} from "../../Network/CRUD";
+import { LocationOnOutlined } from "@material-ui/icons";
 
 const Admin = () => {
   const [activeElement, setActiveElement] = useState("Project");
   const [newProject, setNewProject] = useState(false);
-  const { Title } = Typography;
-  function createData(name, calories, fat, carbs) {
-    return { name, calories, fat, carbs };
-  }
+  const [update, setUpdate] = useState(false);
+  const [projectName, setProjectName] = useState("");
+  const [location, setLocation] = useState("");
+  const [numberOfUnits, setNumberOfUnits] = useState(0);
+  const [numberOfBuildings, setNumberOfBuildings] = useState(0);
+  const [headerImage, setHeaderImage] = useState();
+  const [brochureImage, setbroChureImage] = useState();
+  const [projects, setProjects] = useState([]);
+  const [filteredProjects, setFilteredProjects] = useState([]);
 
-  const rows = [
-    createData("Frozen yoghurt", 159, 6.0, 24),
-    createData("Ice cream sandwich", 237, 9.0, 37),
-    createData("Eclair", 262, 16.0, 24),
-    createData("Cupcake", 305, 3.7, 67),
-    createData("Gingerbread", 356, 16.0, 49),
-  ];
+  const [tempProject, setTempProject] = useState({});
+
+  useEffect(() => {
+    (async () => {
+      const response = await getRequest("Project");
+      console.log("response", response);
+      if (response.status === 200) {
+        setProjects(response.data);
+        setFilteredProjects(response.data);
+
+        console.log("seett");
+      }
+    })();
+  }, []);
+  const searchOnChange = (word) => {
+    console.log("word", word);
+    const filter = projects.filter((item) => item.projectName.includes(word));
+    setFilteredProjects(filter);
+  };
+  const EditClick = (e) => {
+    setUpdate(true);
+    const project = projects.filter((item) => item.id == e);
+    console.log("Edit", project);
+    setTempProject(project[0]);
+    setProjectName(project[0].projectName);
+    setLocation(project[0].location);
+    setNumberOfBuildings(project[0].numberOfBuildings);
+    setNumberOfUnits(project[0].numberOfUnits);
+  };
+  const Update = async () => {
+    setNewProject(false);
+    setUpdate(false);
+    let body = new FormData();
+    body.append("projectName", projectName);
+    body.append("location", location);
+    body.append("numberOfBuildings", numberOfBuildings);
+    body.append("numberOfUnits", numberOfUnits);
+    if (headerImage) {
+      body.append("headerImage", headerImage);
+    }
+    if (brochureImage) {
+      body.append("ProSureImage", brochureImage);
+    }
+    const respone = await PutRequest(body, "Project");
+    console.log("res", respone);
+  };
+  const DeleteClick = async (e) => {
+    console.log(e);
+    if (e) {
+      const repsonse = DeleteRequest(`Project/${e}`);
+      console.log(repsonse);
+      if (repsonse.status == 201) {
+        alert("DELETED");
+      }
+    }
+  };
+
+  const AddNew = async () => {
+    setNewProject(false);
+    let body = new FormData();
+    console.log();
+    body.append("projectName", projectName);
+    body.append("location", location);
+    body.append("numberOfBuildings", numberOfBuildings);
+    body.append("numberOfUnits", numberOfUnits);
+    body.append("headerImage", headerImage);
+    body.append("ProSureImage", brochureImage);
+
+    const respone = await PostRequest(body, "Project");
+    console.log("res", respone);
+  };
+  const { Title } = Typography;
   const styles = useStyles();
   return (
     <>
@@ -61,6 +138,8 @@ const Admin = () => {
                     }
                     onClick={() => {
                       setActiveElement("Project");
+                      setUpdate(false);
+                      setNewProject(false);
                     }}
                     fullWidth
                   >
@@ -92,7 +171,7 @@ const Admin = () => {
           </Typography>
         </Box>
       </div>
-      {newProject ? (
+      {newProject || update ? (
         <Grid container>
           <Grid item xs={12} lg={3}></Grid>
           <Grid item xs={12} lg={6}>
@@ -102,7 +181,11 @@ const Admin = () => {
               </h2>
               <TextField
                 id="projectName"
+                value={projectName}
                 variant="outlined"
+                onChange={(e) => {
+                  setProjectName(e.target.value);
+                }}
                 InputProps={{
                   className: styles.input,
                 }}
@@ -114,6 +197,10 @@ const Admin = () => {
               </h2>
               <TextField
                 id="projectLocation"
+                value={location}
+                onChange={(e) => {
+                  setLocation(e.target.value);
+                }}
                 variant="outlined"
                 InputProps={{
                   className: styles.input,
@@ -126,6 +213,10 @@ const Admin = () => {
               </h2>
               <TextField
                 id="buildings"
+                value={numberOfBuildings}
+                onChange={(e) => {
+                  setNumberOfBuildings(e.target.value);
+                }}
                 variant="outlined"
                 InputProps={{
                   className: styles.input,
@@ -138,7 +229,44 @@ const Admin = () => {
               </h2>
               <TextField
                 id="Units"
+                type="number"
+                value={numberOfUnits}
+                onChange={(e) => {
+                  setNumberOfUnits(e.target.value);
+                }}
                 variant="outlined"
+                InputProps={{
+                  className: styles.input,
+                }}
+              />
+            </FormControl>
+            <FormControl style={{ marginTop: "10px" }} fullWidth>
+              <h2 style={{ color: "white" }} htmlFor="Units">
+                brochure Image
+              </h2>
+              <TextField
+                id="Units"
+                type="file"
+                onChange={(e) => {
+                  setbroChureImage(e.target.files[0]);
+                }}
+                variant="outlined"
+                InputProps={{
+                  className: styles.input,
+                }}
+              />
+            </FormControl>
+            <FormControl style={{ marginTop: "10px" }} fullWidth>
+              <h2 style={{ color: "white" }} htmlFor="Units">
+                Header Image
+              </h2>
+              <TextField
+                id="header"
+                variant="outlined"
+                type="file"
+                onChange={(e) => {
+                  setHeaderImage(e.target.files[0]);
+                }}
                 InputProps={{
                   className: styles.input,
                 }}
@@ -153,6 +281,7 @@ const Admin = () => {
             >
               <Button
                 variant="outlined"
+                onClick={newProject ? AddNew : update ? Update : null}
                 style={{
                   marginRight: "25%",
                   marginLeft: "25%",
@@ -162,7 +291,7 @@ const Admin = () => {
                   borderColor: "white",
                 }}
               >
-                Create New Project
+                {newProject ? "Create New Project" : " Update Project"}
               </Button>
             </FormControl>
           </Grid>
@@ -176,15 +305,21 @@ const Admin = () => {
                 <Box className={styles.searchDiv}>
                   <SearchBar
                     style={{ margin: "20px" }}
-                    // value={this.state.value}
-                    //onChange={(newValue) => this.setState({ value: newValue })}
-                    //onRequestSearch={() => doSomethingWith(this.state.value)}
+                    onChange={(e) => {
+                      searchOnChange(e);
+                    }}
                   />
                 </Box>
               </Grid>
               <Grid item xs={12} lg={4}>
                 <Box className={styles.searchDiv}>
-                  <Button variant="outlined" className={styles.btn}>
+                  <Button
+                    variant="outlined"
+                    className={styles.btn}
+                    onClick={() => {
+                      setNewProject(true);
+                    }}
+                  >
                     {" "}
                     Add New Project
                   </Button>
@@ -216,10 +351,11 @@ const Admin = () => {
                   <TableCell className={styles.cell} align="center">
                     Number of Units
                   </TableCell>
+                  <TableCell className={styles.cell} align="center"></TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row) => (
+                {filteredProjects?.map((row) => (
                   <TableRow
                     key={row.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
@@ -229,16 +365,44 @@ const Admin = () => {
                       component="th"
                       scope="row"
                     >
-                      {row.name}
+                      {row.projectName}
                     </TableCell>
                     <TableCell className={styles.cell} align="center">
-                      {row.calories}
+                      {row.location}
                     </TableCell>
                     <TableCell className={styles.cell} align="center">
-                      {row.fat}
+                      {row.numberOfBuildings}
                     </TableCell>
                     <TableCell className={styles.cell} align="center">
-                      {row.carbs}
+                      {row.numberOfUnits}
+                    </TableCell>
+                    <TableCell className={styles.cell} align="center">
+                      <Button
+                        style={{ color: "green", borderColor: "green" }}
+                        variant="outlined"
+                        id={row.id}
+                        onClick={(e) => {
+                          EditClick(row.id);
+                        }}
+                      >
+                        Edit
+                      </Button>
+                      {"   "}
+                      <Button
+                        style={{
+                          marginRight: "10px",
+                          marginLeft: "10px",
+                        }}
+                        id={row.id}
+                        onClick={(e) => {
+                          DeleteClick(row.id);
+                        }}
+                        variant="outlined"
+                        color="secondary"
+                        variant="outlined"
+                      >
+                        Delete
+                      </Button>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -251,114 +415,3 @@ const Admin = () => {
   );
 };
 export default Admin;
-/*
-       <Col id="reserved" span={24}>
-        <Row justify="center" align="middle">
-          <Col span={24}>
-            <Title style={{ marginBottom: "60px" }}>ADMIN PANEL</Title>
-          </Col>
-          <Col>
-            <Row
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                marginLeft: "30px",
-                marginRight: "30px",
-              }}px
-            >
-              <Col
-                style={{
-                  display: "inline-block",
-                  minWidth: "50%",
-                }}
-                xs={{ span: 10 }}
-                lg={{ span: 10 }}
-                className={ 
-                  this.state.activeElement === "Project" ? "active" : ""
-                }
-                onClick={() => {
-                  this.setState({ activeElement: "Project" });
-                }}
-              >
-                Projects
-              </Col>
-              <Col
-                style={{ display: "inline-block", minWidth: "50%" }}
-                xs={{ span: 10 }}
-                className={
-                  this.state.activeElement === "PhoneNumbers" ? "active" : ""
-                }
-                onClick={() => {
-                  this.setState({ activeElement: "PhoneNumbers" });
-                }}
-                lg={{ span: 10 }}
-              >
-                PhoneNumbers
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <Row></Row>
-        <Row justify="center">
-          <Col span={24}>
-            <Row justify="center">
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                Project Name
-              </Col>
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                Location
-              </Col>
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                Number of Buildings
-              </Col>
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                Number of Units
-              </Col>
-            </Row>
-
-      }
-
-            <Row justify="center" key="222">
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                <Row style={{ height: "100%" }} justify="center" align="middle">
-                  <Col>Nameee1</Col>
-                </Row>
-              </Col>
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                <Row style={{ height: "100%" }} justify="center" align="middle">
-                  <Col>Location</Col>
-                </Row>
-              </Col>
-
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                <Row style={{ height: "100%" }} justify="center" align="middle">
-                  <Col>100</Col>
-                </Row>
-              </Col>
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                <Row style={{ height: "100%" }} justify="center" align="middle">
-                  <Col>100</Col>
-                </Row>
-              </Col>
-              <Col xs={{ span: 23 }} lg={{ span: 3 }}>
-                <Row style={{ height: "100%" }} justify="center" align="middle">
-                  <Col>
-                    <Button variant={"outlined"} style={{ marginLeft: "5px" }}>
-                      Edit
-                    </Button>
-                  </Col>
-                  <Col>
-                    <Button variant={"outlined"} style={{ marginLeft: "5px" }}>
-                      Delete
-                    </Button>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </Col>
- 
- 
- 
- */
