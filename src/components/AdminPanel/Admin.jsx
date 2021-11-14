@@ -23,6 +23,7 @@ import {
   PutRequest,
   DeleteRequest,
 } from "../../Network/CRUD";
+import { useNavigate } from "react-router-dom";
 import { LocationOnOutlined } from "@material-ui/icons";
 
 const Admin = () => {
@@ -39,8 +40,11 @@ const Admin = () => {
   const [filteredProjects, setFilteredProjects] = useState([]);
 
   const [tempProject, setTempProject] = useState({});
-
+  let navigate = useNavigate();
   useEffect(() => {
+    if (!window.localStorage.getItem("email")) {
+      navigate("/");
+    }
     (async () => {
       const response = await getRequest("Project");
       console.log("response", response);
@@ -75,14 +79,25 @@ const Admin = () => {
     body.append("location", location);
     body.append("numberOfBuildings", numberOfBuildings);
     body.append("numberOfUnits", numberOfUnits);
+    body.append("closed", false);
+
     if (headerImage) {
       body.append("headerImage", headerImage);
     }
     if (brochureImage) {
       body.append("ProSureImage", brochureImage);
     }
-    const respone = await PutRequest(body, "Project");
-    console.log("res", respone);
+    const respone = await PutRequest(body, `Project/${tempProject.id}`);
+    if (respone.status == 204) {
+      await updateUI();
+    }
+  };
+  const updateUI = async () => {
+    const resp = await getRequest("Project");
+    if (resp.status === 200) {
+      setProjects(resp.data);
+      setFilteredProjects(resp.data);
+    }
   };
   const DeleteClick = async (e) => {
     console.log(e);
@@ -91,6 +106,7 @@ const Admin = () => {
       console.log(repsonse);
       if (repsonse.status == 201) {
         alert("DELETED");
+        await updateUI();
       }
     }
   };
@@ -108,6 +124,7 @@ const Admin = () => {
 
     const respone = await PostRequest(body, "Project");
     console.log("res", respone);
+    updateUI();
   };
   const { Title } = Typography;
   const styles = useStyles();

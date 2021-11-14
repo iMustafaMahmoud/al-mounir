@@ -11,6 +11,7 @@ import Admin from "./components/AdminPanel/Admin";
 import Home from "./components/Home/Home";
 import Footer from "./components/Footer/Footer";
 import ProjectDetails from "./components/ProjectDetails/ProjectDetails";
+import Login from "./components/Login/Login";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route exact path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/login" element={<Login />} />
 
         <Route path="admin" element={<Admin />} />
       </Routes>

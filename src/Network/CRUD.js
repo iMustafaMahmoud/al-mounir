@@ -34,6 +34,23 @@ const getRequest = async (url) => {
       return false;
     });
 };
+const axiosPost = async (body, targetlink) => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  return axios
+    .post(`${API_ENDPOINT}${targetlink}`, body, config)
+    .then(async (response) => {
+      return response;
+    })
+    .catch((error) => {
+      alert(handleErrors(error));
+      return false;
+    });
+};
 
 const PostRequest = async (body, targetlink) => {
   const config = {
@@ -104,4 +121,11 @@ const DeleteRequest = async (targetlink) => {
     });
 };
 
-export { getRequest, PostRequest, MultipartRequest, PutRequest, DeleteRequest };
+export {
+  getRequest,
+  axiosPost,
+  PostRequest,
+  MultipartRequest,
+  PutRequest,
+  DeleteRequest,
+};
