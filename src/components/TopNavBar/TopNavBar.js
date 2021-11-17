@@ -11,7 +11,7 @@ import { Box, Button } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import IconButton from "@material-ui/core/IconButton";
-import Logo from "../../assets/images/final-logo.png";
+import Logo from "../../assets/images/Final-logo-2.png"
 import { NavLink } from "react-router-dom";
 
 function HideOnScroll(props) {
@@ -58,8 +58,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   Logo: {
-    height: "120px",
-    width: "120px",
+    height: "60px",
+    width: "60px",
   },
 }));
 

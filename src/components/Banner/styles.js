@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   center: {
     position: "absolute",
-    top: "50%",
+    top: "45%",
     left: "50%",
     transform: "translate(-50%,-50%)",
     color: "black",
@@ -21,6 +21,30 @@ export const useStyles = makeStyles((theme) => ({
 
   animatedText: {
     animation: `$moveRight 1.5s ease-out`,
+  },
+
+  animatedSince: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: '3rem',
+    animation: `$fadeIn 1.5s ease-out`,
+
+  },
+
+  "@keyframes fadeIn": {
+    "0%": {
+      transform: "translateY(-50px)",
+      opacity: 0,
+    },
+    "80%": {
+      transform: "translateY(10px)",
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translate(0)",
+
+    },
   },
 
   "@keyframes moveRight": {
