@@ -25,8 +25,15 @@ const ProjectDetails = () => {
           </Typography>
         </Box>
       </Box>
-      <Box mt={3} display="flex" alignItems="center" justifyContent="center">
+      <Box mt={3} display="flex" alignItems="center" justifyContent="between" width="100%">
         {/* <img className={styles.projectImage} src={image} alt="" /> */}
+        <Box color="white" width="40%" pr={2}>
+        <Typography variant="h1">Abrag El-Mounir</Typography>
+        <Box mt={2}>
+        <Typography variant="h3">Abrag El-Mounir Abrag El-Mounir Abrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-MounirAbrag El-Mounir</Typography>
+        </Box>
+        </Box>
+        <Box width="50%">
         <Zoom>
           <img
             className={styles.projectImage}
@@ -34,6 +41,7 @@ const ProjectDetails = () => {
             src={image}
           />
         </Zoom>
+        </Box>
       </Box>
     </>
   );

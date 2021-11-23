@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import { Box, Typography, Grid, Link } from "@material-ui/core";
 import { getRequest } from "../../Network/CRUD";
 
+
 const Home = () => {
   const [projects, setProjects] = useState([]);
   console.log(projects);
@@ -40,7 +41,7 @@ const Home = () => {
         <Grid container spacing={2}>
           {projects?.map((item) => {
             return (
-              <Grid item xs={12} lg={4}>
+              <Grid item xs={12} lg={4} >
                 <Box
                   width="100%"
                   display="flex"
