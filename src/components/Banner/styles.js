@@ -32,16 +32,16 @@ export const useStyles = makeStyles((theme) => ({
 
   "@keyframes fadeIn": {
     "0%": {
-      transform: "translateY(-50px)",
+      // transform: "translateY(-50px)",
       opacity: 0,
     },
     "80%": {
-      transform: "translateY(10px)",
+      // transform: "translateY(10px)",
       opacity: 0.5,
     },
     "100%": {
       opacity: 1,
-      transform: "translate(0)",
+      // transform: "translate(0)",
 
     },
   },
