@@ -538,7 +538,6 @@ class Admin extends Component {
               </Col>
             </Row>
 
-            {/* data */}
 
             <Row justify="center" key="222">
               <Col xs={{ span: 23 }} lg={{ span: 3 }}>
