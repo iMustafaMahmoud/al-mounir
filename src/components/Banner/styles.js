@@ -2,31 +2,54 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export const useStyles = makeStyles((theme) => ({
   banner: {
-    width: "100%",
     height: "600px",
     position: "relative",
     backgroundSize: "cover",
     backgroundPosition: "top",
-    clipPath: "polygon(0 0 , 100% 0, 100% 75vh, 0 100%)",
+    // clipPath: "polygon(0 0 , 100% 0, 100% 75vh, 0 100%)",
     backgroundImage:
-      "linear-gradient(to right bottom, rgba(128, 96, 36, 0.8), rgba(253, 224, 141, 0.8), rgba(200, 143, 36, 0.8)), url(https://images.pexels.com/photos/87223/pexels-photo-87223.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)",
+      "linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(9, 9, 9, 0.8), rgba(19, 19, 19, 0.8))",
   },
   center: {
     position: "absolute",
-    top: "50%",
+    top: "45%",
     left: "50%",
     transform: "translate(-50%,-50%)",
     color: "black",
   },
 
   animatedText: {
-    animation: `$moveRight 1s ease-out`,
+    animation: `$moveRight 1.5s ease-out`,
+  },
+
+  animatedSince: {
+    color: 'white',
+    textAlign: 'center',
+    fontSize: '3rem',
+    animation: `$fadeIn 1.5s ease-out`,
+
+  },
+
+  "@keyframes fadeIn": {
+    "0%": {
+      // transform: "translateY(-50px)",
+      opacity: 0,
+    },
+    "80%": {
+      // transform: "translateY(10px)",
+      opacity: 0.5,
+    },
+    "100%": {
+      opacity: 1,
+      // transform: "translate(0)",
+
+    },
   },
 
   "@keyframes moveRight": {
     "0%": {
       opacity: 0,
-      transform: "translateX(-100px)",
+      transform: "translateX(-200px)",
     },
     "80%": {
       transform: "translateX(10px)",

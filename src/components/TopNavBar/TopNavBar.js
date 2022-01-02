@@ -11,6 +11,8 @@ import { Box, Button } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import IconButton from "@material-ui/core/IconButton";
+import Logo from "../../assets/images/Final-logo-2.png"
+import { NavLink } from "react-router-dom";
 
 function HideOnScroll(props) {
   const { children, window } = props;
@@ -55,6 +57,10 @@ const useStyles = makeStyles((theme) => ({
       color: "#06D755",
     },
   },
+  Logo: {
+    height: "60px",
+    width: "60px",
+  },
 }));
 
 export default function TopAppBar(props) {
@@ -72,23 +78,31 @@ export default function TopAppBar(props) {
               width="100%"
             >
               <Box>
-                <Typography variant="h2" noWrap>
-                  Al-Mounir
-                </Typography>
+                <NavLink to="/">
+                  <img className={styles.Logo} src={Logo} alt="" />
+                </NavLink>
               </Box>
               <Box display="flex" justifyContent="space-between" width="400px">
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Properties</Typography>
-                </Button>
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Developers</Typography>
-                </Button>
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Projects</Typography>
-                </Button>
-                <Button variant="contained" className="header">
-                  <Typography variant="subtitle2">Payment</Typography>
-                </Button>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Projects</Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Mission</Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Vision</Typography>
+                  </Button>
+                </NavLink>
+                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                  <Button variant="contained" className="header">
+                    <Typography variant="subtitle2">Contact Us</Typography>
+                  </Button>
+                </NavLink>
               </Box>
               <Box>
                 <IconButton className={styles.iconButtonFacebook}>

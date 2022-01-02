@@ -1,10 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { Box, Typography, Grid, Link } from "@material-ui/core";
+import { Box, Typography, Grid, Link, Button } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import PhoneIcon from "@material-ui/icons/Call";
+import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   facebookIcon: {
@@ -16,6 +17,14 @@ const useStyles = makeStyles((theme) => ({
   facebookLink: {
     color: "white",
   },
+  footerLinks: {
+    color: "white",
+    textDecoration: "none",
+    transition: "0.4s",
+    "&:hover": {
+      color: "#FFD700",
+    },
+  },
 }));
 
 const Footer = () => {
@@ -23,6 +32,7 @@ const Footer = () => {
 
   return (
     <Box
+      mt={6}
       padding="20px 50px"
       borderTop={1}
       xborderColor="#D4AF37"
@@ -35,11 +45,31 @@ const Footer = () => {
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
-            height="100px"
+            height="150px"
+            width="120px"
           >
             <Typography variant="h1">Al-Mounir</Typography>
-            <Typography variant="h3">About Us</Typography>
-            <Typography variant="h3">All Projects</Typography>
+
+            <NavLink to="/projects" style={{ textDecoration: "none" }}>
+              <Typography className={styles.footerLinks} variant="subtitle2">
+                Projects
+              </Typography>
+            </NavLink>
+            <NavLink to="/projects" style={{ textDecoration: "none" }}>
+              <Typography className={styles.footerLinks} variant="subtitle2">
+                Mission
+              </Typography>
+            </NavLink>
+            <NavLink to="/projects" style={{ textDecoration: "none" }}>
+              <Typography className={styles.footerLinks} variant="subtitle2">
+                Vision
+              </Typography>
+            </NavLink>
+            <NavLink to="/projects" style={{ textDecoration: "none" }}>
+              <Typography className={styles.footerLinks} variant="subtitle2">
+                Contact Us
+              </Typography>
+            </NavLink>
           </Box>
         </Grid>
         <Grid item xs={12} lg={4}>
