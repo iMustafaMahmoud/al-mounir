@@ -12,6 +12,7 @@ import Login from "./components/Login/Login";
 import { Routes, Route, Link } from "react-router-dom";
 import BannerHeader from "./components/Banner/Banner";
 import PropertyCard from "./components/PropertyCard/PropertyCard";
+import ContactUs from "./components/ContactUs/ContactUs";
 const useStyles = makeStyles((theme) => ({
   icon: {
     height: "600px",
@@ -40,15 +41,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route exact path="/projects" element={<Projects />} />
         <Route path="/projects/:id" element={<ProjectDetails />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/login" element={<Login />} />
 
         <Route path="admin" element={<Admin />} />
       </Routes>
       <Footer />
-   <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="admin" element={<Admin />} />
-      </Routes>
    </ThemeProvider>
   );
 }

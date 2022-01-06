@@ -7,7 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import { makeStyles } from "@material-ui/core/styles";
 import Slide from "@material-ui/core/Slide";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, Link } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import IconButton from "@material-ui/core/IconButton";
@@ -82,35 +82,36 @@ export default function TopAppBar(props) {
                   <img className={styles.Logo} src={Logo} alt="" />
                 </NavLink>
               </Box>
-              <Box display="flex" justifyContent="space-between" width="400px">
+              <Box display="flex" justifyContent="space-between" width="200px">
                 <NavLink to="/projects" style={{ textDecoration: "none" }}>
                   <Button variant="contained" className="header">
                     <Typography variant="subtitle2">Projects</Typography>
                   </Button>
                 </NavLink>
-                <NavLink to="/projects" style={{ textDecoration: "none" }}>
-                  <Button variant="contained" className="header">
-                    <Typography variant="subtitle2">Mission</Typography>
-                  </Button>
-                </NavLink>
-                <NavLink to="/projects" style={{ textDecoration: "none" }}>
-                  <Button variant="contained" className="header">
-                    <Typography variant="subtitle2">Vision</Typography>
-                  </Button>
-                </NavLink>
-                <NavLink to="/projects" style={{ textDecoration: "none" }}>
+                
+                <NavLink to="/contact-us" style={{ textDecoration: "none" }}>
                   <Button variant="contained" className="header">
                     <Typography variant="subtitle2">Contact Us</Typography>
                   </Button>
                 </NavLink>
               </Box>
               <Box>
-                <IconButton className={styles.iconButtonFacebook}>
-                  <FacebookIcon fontSize="large" />
+                <IconButton >
+                <Link
+                    className={styles.iconButtonFacebook}
+                    href="https://web.facebook.com/AlMounirdevelopment"
+                  >
+                  <FacebookIcon fontSize="large" href="https://web.facebook.com/AlMounirdevelopment"/>               
+                  </Link>
                 </IconButton>
 
-                <IconButton className={styles.iconButtonWhatsapp}>
+                <IconButton >
+                <Link
+                    className={styles.iconButtonWhatsapp}
+                    href="//api.whatsapp.com/send?phone=201006362242&text=Hello"
+                  >
                   <WhatsAppIcon fontSize="large" />
+                  </Link>
                 </IconButton>
               </Box>
             </Box>

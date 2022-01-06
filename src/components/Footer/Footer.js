@@ -45,7 +45,7 @@ const Footer = () => {
             display="flex"
             flexDirection="column"
             justifyContent="space-between"
-            height="150px"
+            height="100px"
             width="120px"
           >
             <Typography variant="h1">Al-Mounir</Typography>
@@ -53,16 +53,6 @@ const Footer = () => {
             <NavLink to="/projects" style={{ textDecoration: "none" }}>
               <Typography className={styles.footerLinks} variant="subtitle2">
                 Projects
-              </Typography>
-            </NavLink>
-            <NavLink to="/projects" style={{ textDecoration: "none" }}>
-              <Typography className={styles.footerLinks} variant="subtitle2">
-                Mission
-              </Typography>
-            </NavLink>
-            <NavLink to="/projects" style={{ textDecoration: "none" }}>
-              <Typography className={styles.footerLinks} variant="subtitle2">
-                Vision
               </Typography>
             </NavLink>
             <NavLink to="/projects" style={{ textDecoration: "none" }}>
@@ -78,7 +68,7 @@ const Footer = () => {
             <Box mt={1} display="flex">
               <WhatsAppIcon className={styles.whatsAppIcon} fontSize="large" />
               <Box ml={1}>
-                <Typography variant="h3">01007020083</Typography>
+                <Typography variant="h3">01006362242</Typography>
               </Box>
             </Box>
             <Box mt={1} display="flex">
@@ -111,7 +101,7 @@ const Footer = () => {
             <Box mt={1} display="flex" alignItems="center">
               <PhoneIcon className={styles.facebookIcon} fontSize="large" />
               <Box ml={1}>
-                <Typography variant="h3">01007020083</Typography>
+                <Typography variant="h3">01006362242</Typography>
               </Box>
             </Box>
           </Box>
