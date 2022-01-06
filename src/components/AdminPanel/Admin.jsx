@@ -105,7 +105,6 @@ const Admin = () => {
       const repsonse = DeleteRequest(`Project/${e}`);
       console.log(repsonse);
       if (repsonse.status == 201) {
-        alert("DELETED");
         await updateUI();
       }
     }

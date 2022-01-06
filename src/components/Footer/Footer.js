@@ -55,7 +55,7 @@ const Footer = () => {
                 Projects
               </Typography>
             </NavLink>
-            <NavLink to="/projects" style={{ textDecoration: "none" }}>
+            <NavLink to="/contact-us" style={{ textDecoration: "none" }}>
               <Typography className={styles.footerLinks} variant="subtitle2">
                 Contact Us
               </Typography>

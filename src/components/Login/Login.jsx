@@ -17,7 +17,6 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!validateForm()) {
-      alert("wrond username or password");
     }
     let formdata = new FormData();
     formdata.append("email", email);

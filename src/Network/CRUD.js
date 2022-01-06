@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_ENDPOINT = "https://localhost:44339/api/";
+const API_ENDPOINT = "http://www.almounirdevelopment.com/api/";
 
 const Api = axios.create({
   baseURL: API_ENDPOINT,
@@ -30,7 +30,6 @@ const getRequest = async (url) => {
       return response;
     })
     .catch((error) => {
-      alert(handleErrors(error));
       return false;
     });
 };
@@ -47,7 +46,6 @@ const axiosPost = async (body, targetlink) => {
       return response;
     })
     .catch((error) => {
-      alert(handleErrors(error));
       return false;
     });
 };
@@ -65,7 +63,6 @@ const PostRequest = async (body, targetlink) => {
       return response;
     })
     .catch((error) => {
-      alert(handleErrors(error));
       return false;
     });
 };
@@ -82,7 +79,6 @@ const MultipartRequest = async (body, targetlink) => {
       return response;
     })
     .catch((error) => {
-      alert(handleErrors(error));
       return false;
     });
 };
@@ -99,7 +95,6 @@ const PutRequest = async (body, targetlink) => {
       return response;
     })
     .catch((error) => {
-      alert(handleErrors(error));
       return false;
     });
 };
@@ -116,7 +111,6 @@ const DeleteRequest = async (targetlink) => {
       return response;
     })
     .catch((error) => {
-      alert(handleErrors(error));
       return false;
     });
 };
