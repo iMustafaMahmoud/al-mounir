@@ -14,7 +14,7 @@ export default function RecipeReviewCard({ project }) {
   let navigate = useNavigate();
 
   return (
-    <Card className={classes.root} onClick={() => navigate('/projects/3')}>
+    <Card className={classes.root} onClick={() => navigate(`/projects/${project.id}`)}>
       <Box height="13px" width="100%" bgcolor="black" borderRadius="10px"></Box>
       <CardHeader
         className={classes.MuiCardHeader}
