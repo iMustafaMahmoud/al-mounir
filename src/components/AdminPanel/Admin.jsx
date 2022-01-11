@@ -31,6 +31,7 @@ const Admin = () => {
   const [newProject, setNewProject] = useState(false);
   const [update, setUpdate] = useState(false);
   const [projectName, setProjectName] = useState("");
+  const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [numberOfUnits, setNumberOfUnits] = useState(0);
   const [numberOfBuildings, setNumberOfBuildings] = useState(0);
@@ -70,12 +71,14 @@ const Admin = () => {
     setLocation(project[0].location);
     setNumberOfBuildings(project[0].numberOfBuildings);
     setNumberOfUnits(project[0].numberOfUnits);
+    setDescription(project[0].description);
   };
   const Update = async () => {
     setNewProject(false);
     setUpdate(false);
     let body = new FormData();
     body.append("projectName", projectName);
+    body.append("description", description);
     body.append("location", location);
     body.append("numberOfBuildings", numberOfBuildings);
     body.append("numberOfUnits", numberOfUnits);
@@ -115,6 +118,7 @@ const Admin = () => {
     let body = new FormData();
     console.log();
     body.append("projectName", projectName);
+    body.append("description", description);
     body.append("location", location);
     body.append("numberOfBuildings", numberOfBuildings);
     body.append("numberOfUnits", numberOfUnits);
@@ -201,6 +205,22 @@ const Admin = () => {
                 variant="outlined"
                 onChange={(e) => {
                   setProjectName(e.target.value);
+                }}
+                InputProps={{
+                  className: styles.input,
+                }}
+              />
+            </FormControl>
+            <FormControl style={{ marginTop: "10px" }} fullWidth>
+              <h2 htmlFor="description" style={{ color: "white" }}>
+                Project Description
+              </h2>
+              <TextField
+                id="projectName"
+                value={description}
+                variant="outlined"
+                onChange={(e) => {
+                  setDescription(e.target.value);
                 }}
                 InputProps={{
                   className: styles.input,
